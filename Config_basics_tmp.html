@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Config_basics.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="linux-server-configuration">LINUX Server Configuration</h1>
+<h2 id="conda-basics">Conda Basics</h2>
+<h3 id="directory-structure">Directory structure</h3>
+<pre class="hljs"><code><div>
+(base) leb3a@bbt:~$ ll /rd1/home/leb3a/miniconda3/
+total 76
+drwxr-xr-x 16 leb3a leb  4096 Apr 11 11:52 ./
+drwxr-xr-x 15 leb3a leb  4096 Apr 14 11:53 ../
+drwxr-xr-x  2 leb3a leb  4096 Apr 11 11:51 bin/
+drwxr-xr-x  2 leb3a leb  4096 Apr 11 11:51 compiler_compat/
+drwxr-xr-x  2 leb3a leb  4096 Apr 11 11:51 condabin/
+drwxr-xr-x  2 leb3a leb  4096 Apr 11 11:51 conda-meta/
+drwxr-xr-x  3 leb3a leb  4096 Apr 11 11:57 envs/                            <span class="hljs-comment">#环境配置的位置</span>
+drwxr-xr-x  4 leb3a leb  4096 Apr 11 11:51 etc/
+drwxr-xr-x  8 leb3a leb  4096 Apr 11 11:51 include/
+drwxr-xr-x 15 leb3a leb  4096 Apr 11 11:51 lib/
+-rw-r--r--  1 leb3a leb 11055 Jan 28 04:05 LICENSE.txt
+drwxr-xr-x 47 leb3a leb  4096 Apr 11 11:58 pkgs/                            <span class="hljs-comment">#解压缩档放置的位置</span>
+drwxr-xr-x 10 leb3a leb  4096 Apr 11 11:51 share/
+drwxr-xr-x  3 leb3a leb  4096 Apr 11 11:51 shell/
+drwxr-xr-x  3 leb3a leb  4096 Apr 11 11:51 ssl/
+drwxr-xr-x  3 leb3a leb  4096 Apr 11 11:51 x86_64-conda_cos6-linux-gnu/
+drwxr-xr-x  3 leb3a leb  4096 Apr 11 11:51 x86_64-conda-linux-gnu/
+</div></code></pre>
+<h3 id="managing-environments">Managing environments</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># To create a env</span>
+conda create --name &lt;myenv&gt;
+<span class="hljs-comment"># To create with specific version of Python or packages</span>
+conda create -n &lt;myenv&gt; python=3.6
+conda create -n &lt;myenv&gt; scipy
+
+<span class="hljs-comment"># Activate and deactivate envs</span>
+conda activate &lt;myenv&gt;
+conda deactivate
+
+<span class="hljs-comment"># Remove env</span>
+conda remove --name &lt;myenv&gt; --all
+</div></code></pre>
+<h3 id="managing-conda-packages">Managing conda packages</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Install a package</span>
+conda install -n &lt;myenv&gt; &lt;pack_name&gt;
+
+<span class="hljs-comment"># If necessary (for example, conda didn't work out), use pip install</span>
+pip install &lt;pack_name&gt;
+
+<span class="hljs-comment"># Add mirrored channel to .condarc</span>
+conda config --add channels &lt;address&gt;
+<span class="hljs-comment"># Common packages from 清华镜像</span>
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+</div></code></pre>
+<h2 id="git-basics">Git Basics</h2>
+<p><img src="file:///rd1/home/leb3a/work_bench/photo/Git_explain.png" alt="Git_concept"></p>
+<h3 id="git-initialization-and-remote-linkage">Git initialization and remote linkage</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Initialize a git</span>
+git init
+
+<span class="hljs-comment"># Set up global configuration </span>
+git config --global user.name <span class="hljs-string">"Jay"</span>
+git config --global user.email <span class="hljs-string">"ycjaychiang@pku.edu.cn"</span>
+
+<span class="hljs-comment"># Set up a SSH key for remote linkage on Github</span>
+ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">"ycjaychiang@pku.edu.cn"</span>
+<span class="hljs-comment"># A ssh public key and private key would be generated in /rd1/home/leb3a/.ssh/</span>
+<span class="hljs-comment"># in which id_rsa is the private one while id_rsa.pub is the public one</span>
+<span class="hljs-comment"># Copy and paste the public key to https://github.com/settings/keys</span>
+
+<span class="hljs-comment"># Link it with a Github repository</span>
+<span class="hljs-comment"># Add a remote repo (github) to our local repo (linux server)</span>
+git remote add origin git@github.com:Jay4BioPZ/LEB22_Basics.git
+
+<span class="hljs-comment"># Once you have added the ssh-key to your github account, remote origin would be successfully linked. Everyting is ready now.</span>
+</div></code></pre>
+<h3 id="git-usage">Git usage</h3>
+<p>After git init, you are having a new project being tracked by git. You are initially in a master branch.</p>
+<p>You can make a &quot;commit&quot; to the remote repo from your local repo once you finish programming and &quot;add&quot; your progress from working tree to index/staging area.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check git status</span>
+git status
+
+<span class="hljs-comment"># (demo)</span>
+On branch master <span class="hljs-comment"># which branch you are on now</span>
+Your branch is up to date with <span class="hljs-string">'origin/master'</span>.
+
+nothing to commit, working tree clean <span class="hljs-comment"># current changes waiting to be committed</span>
+
+<span class="hljs-comment"># Add file to staging area</span>
+git add &lt;filename&gt; <span class="hljs-comment"># add a specific file</span>
+git add . <span class="hljs-comment"># add all files that are not yet added</span>
+
+<span class="hljs-comment"># Make a commit</span>
+git commit -m <span class="hljs-string">"a change have been made for..."</span>
+<span class="hljs-comment">#-m: leave a message</span>
+</div></code></pre>
+<h3 id="git-branching">Git branching</h3>
+<p>Git allows users to writing their code on a branch without effecting the main project. Once they hope to update latest and functional parts to the remote repo (i.e., where the main project locates), they &quot;push&quot; their commitment from local branch.</p>
+<p>Similarly, if they wish to receive progresses made by other users that have been uploaded to the remote repo, they &quot;pull&quot; it down to their working tree and then go through the &quot;add-commit&quot; workflow to put them to the local branch.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create/go to a branch</span>
+git checkout &lt;new_branch&gt;
+git checkout master
+
+<span class="hljs-comment"># List available branches</span>
+git branch
+
+<span class="hljs-comment"># (demo by git status)</span>
+On branch &lt;new_branch&gt; <span class="hljs-comment"># where I am now</span>
+nothing to commit, working tree clean
+
+<span class="hljs-comment"># After commitment, upload progress on local branch to remote repo</span>
+git push -u origin &lt;branch_name&gt;
+<span class="hljs-comment"># the &lt;branch_name&gt; here should be substitute by your branch name (i.e., master...)</span>
+
+<span class="hljs-comment"># Pull from remote repo</span>
+git pull origin master
+</div></code></pre>
+<h2 id="r-environments">R environments</h2>
+<p>We gonna set up a R environment on the linux server through VS code. Such settings would help us use different programming languages in a more integrated and efficient way.</p>
+<p>There are two way to do R programming in VS code:</p>
+<ul>
+<li>Run R in non-interactive cell environment
+<ul>
+<li>Create a new conda env.</li>
+<li>Install R and R-debug extensions on VS code at marketplace.</li>
+<li>Install r-base (CRAN) or radian (alternative console) using conda install.</li>
+<li>Open an R terminal.</li>
+<li>Install necessary packages in R terminal.</li>
+<li>Set up r.path in settings, enable bracketedPaste.</li>
+</ul>
+</li>
+<li>Run R in interactive cell environment (i.e., jupyter)
+<ul>
+<li>Create a new conda env.</li>
+<li>Install jupyter using conda install.</li>
+<li>Install r-base (CRAN) using conda install.</li>
+<li>Open an R terminal.</li>
+<li>Install IRkernel package, register it to current R installation.</li>
+<li>Start programming in jupyter.</li>
+</ul>
+</li>
+</ul>
+<h3 id="common-steps">Common steps</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Make a new environment</span>
+conda create -n R_test
+conda activate R_test
+
+<span class="hljs-comment"># Install radian and r-base</span>
+conda install -c conda-forge radian
+conda install -c conda-forge r-base
+
+<span class="hljs-comment"># Run R: open a new terminal [ctrl+shift+`] and type in:</span>
+<span class="hljs-comment"># "R": for activating r-base</span>
+<span class="hljs-comment"># "radian": for activation radian</span>
+<span class="hljs-comment"># The terminal default user interface would change</span>
+&gt;   <span class="hljs-comment">#r-base</span>
+r$&gt; <span class="hljs-comment">#radian</span>
+<span class="hljs-comment"># Quit R</span>
+q()
+
+<span class="hljs-comment"># Install languageserver and other necessary packages </span>
+<span class="hljs-comment"># an implementation of the Microsoft's Language Server Protocol for the language of R (perform auto complete, documentation...)</span>
+&gt; install.packages(<span class="hljs-string">'languageserver'</span>)
+<span class="hljs-comment"># select 1:0-https as mirror</span>
+&gt; install.packages(<span class="hljs-string">'jsonlite'</span>)
+&gt; install.packages(<span class="hljs-string">'rlang'</span>)
+</div></code></pre>
+<h3 id="vs-code-settings">VS Code settings</h3>
+<ul>
+<li>Specify &quot;r.path for linux&quot; in <em>File &gt; Preferences &gt; Settings</em> on local VS code.</li>
+<li>Enable &quot;R:bracketedPaste&quot; in <em>File &gt; Preferences &gt; Settings</em> on local VS code.</li>
+</ul>
+<h3 id="jupyter-configuration">Jupyter configuration</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Install Jupyter in your conda env</span>
+conda install jupyter
+
+<span class="hljs-comment"># In R terminal, install IRkernel</span>
+&gt; install.packages(<span class="hljs-string">"IRkernel"</span>)
+&gt; IRkernel::installspec
+</div></code></pre>
+<h2 id="common-keyboard-shortcuts-in-vs-code">Common keyboard shortcuts in VS Code</h2>
+<ul>
+<li><code>[ctrl+shift+P]</code> show command palette</li>
+<li><code>[ctrl+shift+`]</code> show terminal</li>
+<li><code>[ctrl+shift+V]</code> show markdown preview</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>For the user guide of Conda, click <a href="https://docs.conda.io/projects/conda/en/latest/index.html">here</a>.</li>
+<li>For refereing 清华镜像, click <a href="https://mirrors.tuna.tsinghua.edu.cn/">here</a>.</li>
+<li>For the man page and cheat sheet regarding Git, click <a href="https://git-scm.com/docs">here</a>.</li>
+<li>For the tutorial of how to set up an R environment on VS code, click <a href="https://anaconda.org/conda-forge/r-base">r-base</a>, <a href="https://github.com/randy3k/radian#how-to-switch-to-a-different-r-or-specify-the-version-of-r">radian</a>, <a href="https://www.infoworld.com/article/3625488/how-to-run-r-in-visual-studio-code.html">VS_code_tutorial_blog</a> or <a href="https://www.youtube.com/watch?v=INP-FsluDuk&amp;t=2s">VScode_tutorial_video</a>.</li>
+</ul>
+
+</body>
+</html>
