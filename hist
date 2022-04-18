@@ -1,0 +1,111 @@
+ 1293  2022-03-31 10:55:41 leb3a git -version
+ 1294  2022-03-31 10:55:46 leb3a git --version
+ 1297  2022-03-31 10:55:55 leb3a mkdir gittest
+ 1298  2022-03-31 10:55:57 leb3a cd gittest/
+ 1299  2022-03-31 10:56:02 leb3a git init
+ 1301  2022-03-31 10:56:53 leb3a cd .git/
+ 1304  2022-03-31 10:57:29 leb3a git config --global user.name "JYC"
+ 1305  2022-03-31 10:57:54 leb3a git config --global user.email "ycjaychiang@pku.edu.cn"
+ 1307  2022-03-31 10:58:28 leb3a git config --list
+ 1308  2022-03-31 10:59:06 leb3a git config --global core.editor vim
+ 1313  2022-03-31 11:12:08 leb3a git add test1.html 
+ 1314  2022-03-31 11:12:14 leb3a git status
+ 1316  2022-03-31 11:14:02 leb3a git commit -m "first commit"
+ 1317  2022-03-31 11:14:08 leb3a git status
+ 1321  2022-03-31 11:15:16 leb3a git add test1.html 
+ 1323  2022-03-31 11:15:32 leb3a git commit -m "first commit"
+ 1324  2022-03-31 11:15:50 leb3a git status
+ 1327  2022-03-31 11:16:35 leb3a git add test2.html 
+ 1328  2022-03-31 11:16:38 leb3a git status
+ 1329  2022-03-31 11:16:49 leb3a git commit -m "first commit"
+ 1330  2022-03-31 11:16:59 leb3a git log
+ 1331  2022-03-31 11:17:12 leb3a #show git history
+ 1701  2022-04-15 14:45:46 leb3a which git
+ 1704  2022-04-15 14:50:21 leb3a cd gittest/
+ 1708  2022-04-15 14:50:37 leb3a rm gittest/
+ 1709  2022-04-15 14:50:45 leb3a rm -r gittest
+ 1711  2022-04-15 14:50:57 leb3a cd gittest/
+ 1715  2022-04-15 14:51:18 leb3a rm -r .git
+ 1719  2022-04-15 14:51:37 leb3a mv gittest/ GIT
+ 1722  2022-04-15 14:51:50 leb3a git init
+ 1725  2022-04-15 14:53:00 leb3a git status
+ 1726  2022-04-15 14:56:40 leb3a git add testing_file.txt 
+ 1727  2022-04-15 14:56:44 leb3a git status
+ 1728  2022-04-15 14:57:47 leb3a git commit -m "first commit"
+ 1729  2022-04-15 14:58:42 leb3a #git branch
+ 1731  2022-04-15 14:59:55 leb3a git checkout -b branch_test
+ 1732  2022-04-15 14:59:59 leb3a git branch
+ 1733  2022-04-15 15:03:50 leb3a git checkout master
+ 1734  2022-04-15 15:03:52 leb3a git branch
+ 1735  2022-04-15 15:04:16 leb3a git config --global user.name "JayBioPZ"
+ 1736  2022-04-15 15:04:37 leb3a git config --global user.email "ycjaychiang@pku.edu.cn"
+ 1737  2022-04-15 15:04:41 leb3a git config --globa
+ 1738  2022-04-15 15:04:44 leb3a git config --global
+ 1739  2022-04-15 15:04:50 leb3a git config
+ 1740  2022-04-15 15:05:01 leb3a git config --global user.email
+ 1741  2022-04-15 15:05:05 leb3a git config --global user.name
+ 1742  2022-04-15 15:05:15 leb3a git config --list
+ 1753  2022-04-15 23:43:17 leb3a git status
+ 1757  2022-04-15 23:49:13 leb3a cd .git/
+ 1768  2022-04-15 23:56:05 leb3a rm -r .git/
+ 1773  2022-04-15 23:56:31 leb3a git init
+ 1774  2022-04-15 23:56:57 leb3a git commit
+ 1779  2022-04-15 23:58:33 leb3a git add textfile.md 
+ 1780  2022-04-15 23:58:38 leb3a git status
+ 1781  2022-04-15 23:59:39 leb3a git commit -m "Add textfile.md"
+ 1782  2022-04-15 23:59:52 leb3a git status
+ 1784  2022-04-16 00:00:46 leb3a git status
+ 1785  2022-04-16 00:01:05 leb3a git add . #add all file
+ 1787  2022-04-16 00:01:11 leb3a git status
+ 1788  2022-04-16 00:01:28 leb3a git commit -m "made changes"
+ 1790  2022-04-16 00:02:14 leb3a git checkout -b new
+ 1792  2022-04-16 00:03:03 leb3a git add .
+ 1793  2022-04-16 00:03:09 leb3a git status
+ 1794  2022-04-16 00:03:24 leb3a git commit -m "first commit on new branch"
+ 1795  2022-04-16 00:03:40 leb3a git checkout master
+ 1800  2022-04-16 00:05:16 leb3a git checkout new
+ 1803  2022-04-16 00:05:57 leb3a git checkout master
+ 1804  2022-04-16 00:06:01 leb3a git status
+ 1805  2022-04-16 00:06:05 leb3a git add .
+ 1806  2022-04-16 00:06:07 leb3a git commit
+ 1807  2022-04-16 00:06:41 leb3a git status
+ 1808  2022-04-16 00:06:57 leb3a git commit -m "Add file to master branch"
+ 1810  2022-04-16 00:07:08 leb3a git checkout new
+ 1813  2022-04-16 00:07:36 leb3a git merge master
+ 1815  2022-04-16 00:08:39 leb3a git checkout master 
+ 1818  2022-04-16 00:10:55 leb3a git remote add origin git@github.com:Jay4BioPZ/LEB22_Basics.git
+ 1820  2022-04-16 00:11:53 leb3a git checkout master
+ 1822  2022-04-16 00:12:02 leb3a git push -u origin master
+ 1834  2022-04-16 00:18:14 leb3a git remote add origin git@github.com:Jay4BioPZ/LEB22_Basics.git
+ 1836  2022-04-16 00:18:39 leb3a git push -u origin master
+ 1837  2022-04-16 00:19:58 leb3a git config --global user.name "Jay"
+ 1838  2022-04-16 00:20:10 leb3a git config --global user.email "ycjaychiang@pku.edu.cn"
+ 1839  2022-04-16 00:20:37 leb3a git push -u origin master
+ 1841  2022-04-16 00:21:57 leb3a git pull origin master
+ 1856  2022-04-16 13:12:13 leb3a wget https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fgit%2Fcomments%2F99ul9f%2Fgit_workflow_diagram_showcasing_the_role_of%2F&psig=AOvVaw2H3LJC4jy0LJS4y56T938M&ust=1650172109225000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCKiuy6rol_cCFQAAAAAdAAAAABAJ
+ 1868  2022-04-16 13:33:20 leb3a git status
+ 1870  2022-04-16 13:43:21 leb3a git status
+ 1871  2022-04-16 13:43:42 leb3a git checkout new
+ 1872  2022-04-16 13:43:47 leb3a git status
+ 1873  2022-04-16 13:45:56 leb3a git branch
+ 1963  2022-04-16 20:21:24 leb3a git init
+ 1964  2022-04-16 20:21:42 leb3a git config --global user.name "Jay"
+ 1965  2022-04-16 20:21:47 leb3a git config --global user.email "ycjaychiang@pku.edu.cn"
+ 1966  2022-04-16 20:21:52 leb3a git remote add origin git@github.com:Jay4BioPZ/LEB22_Basics.git
+ 1967  2022-04-16 20:21:59 leb3a git status
+ 1968  2022-04-16 20:22:35 leb3a git add Config_basics.md
+ 1969  2022-04-16 20:23:14 leb3a git commit -m "Version 1.0.0"
+ 1970  2022-04-16 20:23:45 leb3a git push -u origin master
+ 1971  2022-04-16 20:26:06 leb3a git add .
+ 1972  2022-04-16 20:26:38 leb3a git push --help
+ 1973  2022-04-16 20:27:07 leb3a git push -u origin master
+ 1974  2022-04-16 20:27:43 leb3a git pull --help
+ 1975  2022-04-16 20:27:55 leb3a git pull origin master
+ 1981  2022-04-16 20:31:20 leb3a git clone --help
+ 1982  2022-04-16 20:31:28 leb3a git clone git@github.com:Jay4BioPZ/LEB22_Basics.git
+ 1988  2022-04-16 20:32:27 leb3a git add .
+ 1989  2022-04-16 20:32:29 leb3a git status
+ 1990  2022-04-16 20:32:40 leb3a git commit -m "initial commit"
+ 1991  2022-04-16 20:32:47 leb3a git push -u origin master
+ 2078  2022-04-18 10:55:06 leb3a history | grep git clone > hist
+ 2081  2022-04-18 10:55:20 leb3a history | grep git > hist

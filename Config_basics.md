@@ -73,13 +73,16 @@ custom_channels:
 
 ## Git Basics
 
-![Git_concept](~/../../work_bench/photo/Git_explain.png)
+![Git_concept](/rd1/home/leb3a/work_bench/GIT/LEB22_Basics/Git_explain.png)
 
 ### Git initialization and remote linkage
 
 ```bash
 # Initialize a git
 git init
+
+# or clone a git from remote repo
+git clone git@github.com:Jay4BioPZ/LEB22_Basics.git
 
 # Set up global configuration 
 git config --global user.name "Jay"
@@ -176,6 +179,7 @@ There are two way to do R programming in VS code:
 # Make a new environment
 conda create -n R_test
 conda activate R_test
+# It is better to specify the python version that we wanna install (i.e., python=3.9). Python 2 may cause version conflicts when installing r-base.
 
 # Install radian and r-base
 conda install -c conda-forge radian
@@ -199,8 +203,10 @@ q()
 ```
 
 ### VS Code settings
+
 - Specify "r.path for linux" in *File > Preferences > Settings* on local VS code.
 - Enable "R:bracketedPaste" in *File > Preferences > Settings* on local VS code.
+- Enable "files.autoGuessEncoding" in *File > Preferences > Settings* on local VS code.
 
 ### Jupyter configuration
 
